@@ -1781,49 +1781,63 @@ img, canvas, svg, video {
     justify-content: space-between !important;
   }
 
-  /* Full Width Symmetrical Floating Glass Mobile Drawer */
+  /* Redesigned Compact Symmetrical Floating White Glass Mobile Drawer */
   .nav-links {
     position: absolute !important;
     top: calc(100% + 10px) !important;
     left: 16px !important;
     right: 16px !important;
     width: calc(100% - 32px) !important;
-    background: rgba(11, 25, 44, 0.98) !important;
+    height: auto !important;
+    max-height: calc(85vh - 70px) !important;
+    overflow-y: auto !important;
+    background: rgba(255, 255, 255, 0.98) !important;
     backdrop-filter: blur(24px) !important;
     -webkit-backdrop-filter: blur(24px) !important;
     border: 1.5px solid rgba(198, 163, 86, 0.45) !important;
-    border-radius: 24px !important;
-    padding: 16px 12px !important;
+    border-radius: 22px !important;
+    padding: 10px 8px !important;
     flex-direction: column !important;
     align-items: stretch !important;
-    gap: 4px !important;
+    gap: 3px !important;
     display: none !important;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5), 0 0 30px rgba(198, 163, 86, 0.15) !important;
+    box-shadow: 0 16px 45px rgba(11, 25, 44, 0.18), 0 0 25px rgba(198, 163, 86, 0.12) !important;
     z-index: 1001 !important;
     pointer-events: auto !important;
   }
 
   .nav-links.open {
     display: flex !important;
-    animation: mobileMenuSlideDown 0.35s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    animation: mobileMenuSlideDown 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
   }
 
   @keyframes mobileMenuSlideDown {
-    0% { opacity: 0; transform: translateY(-14px) scale(0.96); }
+    0% { opacity: 0; transform: translateY(-10px) scale(0.97); }
     100% { opacity: 1; transform: translateY(0) scale(1); }
   }
 
   .nav-links a {
-    color: #FFFFFF !important;
-    font-size: 15px !important;
+    color: #0B192C !important;
+    font-size: 14.5px !important;
     font-weight: 600 !important;
-    padding: 12px 18px !important;
+    padding: 11px 16px !important;
     border-radius: 14px !important;
     display: flex !important;
     align-items: center !important;
-    justify-content: space-between !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    transition: all 0.25s var(--ease) !important;
+    justify-content: flex-start !important;
+    gap: 12px !important;
+    border-bottom: 1px solid rgba(11, 25, 44, 0.04) !important;
+    transition: all 0.2s var(--ease) !important;
+  }
+
+  .nav-links a .nav-icon {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    width: 24px !important;
+    color: #C6A356 !important;
+    font-size: 15px !important;
+    flex-shrink: 0 !important;
   }
 
   .nav-links a:last-child {
@@ -1832,9 +1846,11 @@ img, canvas, svg, video {
 
   .nav-links a.active,
   .nav-links a:hover {
-    background: linear-gradient(90deg, rgba(198, 163, 86, 0.25), rgba(198, 163, 86, 0.1)) !important;
-    color: #F3E5AB !important;
-    padding-left: 22px !important;
+    background: rgba(198, 163, 86, 0.15) !important;
+    color: #0B192C !important;
+    font-weight: 700 !important;
+    padding-left: 20px !important;
+    border-left: 3.5px solid #C6A356 !important;
   }
 
   .menu-toggle {

@@ -13,19 +13,19 @@
     const currentPath = window.location.pathname.split('/').pop() || 'index.html';
 
     const navItems = [
-      { name: 'Home', link: 'index.html' },
-      { name: 'About Us', link: 'about.html' },
-      { name: 'Committee', link: 'committee.html' },
-      { name: 'Programs', link: 'programs.html' },
-      { name: 'Membership', link: 'membership.html' },
-      { name: 'Awards', link: 'awards.html' },
-      { name: 'Conferences', link: 'conferences.html' },
-      { name: 'Contact', link: 'contact.html' }
+      { name: 'Home', link: 'index.html', icon: 'fa-house' },
+      { name: 'About Us', link: 'about.html', icon: 'fa-building-columns' },
+      { name: 'Committee', link: 'committee.html', icon: 'fa-users' },
+      { name: 'Programs', link: 'programs.html', icon: 'fa-diagram-project' },
+      { name: 'Membership', link: 'membership.html', icon: 'fa-id-card' },
+      { name: 'Awards', link: 'awards.html', icon: 'fa-award' },
+      { name: 'Conferences', link: 'conferences.html', icon: 'fa-calendar-check' },
+      { name: 'Contact', link: 'contact.html', icon: 'fa-paper-plane' }
     ];
 
     const navLinksHTML = navItems.map(item => {
       const isActive = (item.link === currentPath) || (currentPath === '' && item.link === 'index.html');
-      return `<a href="${item.link}" class="${isActive ? 'active' : ''}">${item.name}</a>`;
+      return `<a href="${item.link}" class="${isActive ? 'active' : ''}"><i class="fa-solid ${item.icon} nav-icon"></i><span>${item.name}</span></a>`;
     }).join('');
 
     const headerHTML = `
