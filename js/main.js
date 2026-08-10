@@ -1,0 +1,349 @@
+/* ==========================================================================
+   Frontier Research and Innovation Foundation — Main JS Logic
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // 0. Preloader Screen Animation (Guaranteed Minimum 1.5 Seconds Display)
+  const preloader = document.getElementById('preloader');
+  const preloaderBar = document.getElementById('preloaderBar');
+  const preloaderPercent = document.getElementById('preloaderPercent');
+
+  if (preloader && preloaderBar && preloaderPercent) {
+    let progress = 0;
+    const minDuration = 1500; // 1.5 seconds minimum
+    const startTime = Date.now();
+
+    const interval = setInterval(() => {
+      const elapsedTime = Date.now() - startTime;
+      let targetProgress = Math.min(100, Math.floor((elapsedTime / minDuration) * 100));
+
+      progress = targetProgress;
+      preloaderBar.style.width = progress + '%';
+      preloaderPercent.innerText = progress + '%';
+
+      if (elapsedTime >= minDuration && progress >= 100) {
+        clearInterval(interval);
+        preloaderBar.style.width = '100%';
+        preloaderPercent.innerText = '100%';
+        setTimeout(() => {
+          preloader.classList.add('fade-out');
+        }, 250);
+      }
+    }, 20);
+  }
+
+  // 1. Header progressive scroll squeeze effect
+  const siteHeader = document.getElementById('siteHeader');
+  const mainNav = siteHeader ? siteHeader.querySelector('nav') : null;
+
+  if (siteHeader && mainNav) {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+
+      if (window.innerWidth > 1080) {
+        // Dynamic continuous squeeze calculation without layout congestion
+        const progress = Math.min(1, Math.max(0, scrollY / 140)); // 0 to 1 over first 140px
+        const currentWidth = 1420 - (progress * 180); // Squeezes from 1420px down to 1240px (Spacious & Clean)
+        const currentPaddingY = 11 - (progress * 4); // Squeezes vertical padding from 11px down to 7px
+        const currentPaddingX = 26 - (progress * 6); // Squeezes horizontal padding from 26px down to 20px
+        const currentTop = 18 - (progress * 8); // Float margin moves from 18px down to 10px
+
+        siteHeader.style.top = `${currentTop}px`;
+        mainNav.style.maxWidth = `${currentWidth}px`;
+        mainNav.style.padding = `${currentPaddingY}px ${currentPaddingX}px`;
+      } else {
+        siteHeader.style.top = '';
+        mainNav.style.maxWidth = '';
+        mainNav.style.padding = '';
+      }
+
+      if (scrollY > 30) {
+        siteHeader.classList.add('scrolled');
+      } else {
+        siteHeader.classList.remove('scrolled');
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('resize', handleScroll, { passive: true });
+    handleScroll();
+  }
+
+  // 2. Active menu link detection
+  const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+  const navLinks = document.querySelectorAll('.nav-links a');
+  navLinks.forEach(link => {
+    const href = link.getAttribute('href');
+    if (href === currentPath || (currentPath === '' && href === 'index.html')) {
+      link.classList.add('active');
+    } else {
+      link.classList.remove('active');
+    }
+  });
+
+  // 3. Mobile menu drawer
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinksContainer = document.querySelector('.nav-links');
+  if (menuToggle && navLinksContainer) {
+    menuToggle.addEventListener('click', () => {
+      navLinksContainer.classList.toggle('open');
+      const icon = menuToggle.querySelector('i');
+      if (icon) {
+        if (navLinksContainer.classList.contains('open')) {
+          icon.className = 'fa-solid fa-xmark';
+        } else {
+          icon.className = 'fa-solid fa-bars';
+        }
+      }
+    });
+
+    // Close menu when link is clicked
+    navLinksContainer.querySelectorAll('a').forEach(a => {
+      a.addEventListener('click', () => {
+        navLinksContainer.classList.remove('open');
+        const icon = menuToggle.querySelector('i');
+        if (icon) icon.className = 'fa-solid fa-bars';
+      });
+    });
+  }
+
+  // 4. Genuine 3D Animated DNA Double Helix Engine
+  const dnaCanvas = document.getElementById('dnaCanvas');
+  if (dnaCanvas && dnaCanvas.getContext) {
+    const ctx = dnaCanvas.getContext('2d');
+    let angleOffset = 0;
+    let scrollPercent = 0;
+
+    const updateScroll = () => {
+      const scrollTotal = document.documentElement.scrollHeight - window.innerHeight;
+      scrollPercent = scrollTotal > 0 ? Math.min(1, Math.max(0, window.scrollY / scrollTotal)) : 0;
+    };
+
+    window.addEventListener('scroll', updateScroll, { passive: true });
+    updateScroll();
+
+    const draw3DDNA = () => {
+      const w = dnaCanvas.width;
+      const h = dnaCanvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      angleOffset += 0.024; // Continuous 3D rotation speed
+
+      const numPairs = 32;
+      const radius = 13;
+      const centerX = w / 2;
+
+      // Array to collect 3D elements for depth sorting
+      const elements = [];
+
+      for (let i = 0; i <= numPairs; i++) {
+        const y = (i / numPairs) * (h - 24) + 12;
+        const normY = y / h;
+        const isHighlighted = normY <= scrollPercent;
+
+        const theta1 = angleOffset + (i * 0.38);
+        const theta2 = theta1 + Math.PI;
+
+        const z1 = Math.sin(theta1);
+        const x1 = centerX + Math.cos(theta1) * radius;
+
+        const z2 = Math.sin(theta2);
+        const x2 = centerX + Math.cos(theta2) * radius;
+
+        // Base pair rung
+        elements.push({
+          type: 'rung',
+          y: y,
+          x1: x1,
+          z1: z1,
+          x2: x2,
+          z2: z2,
+          avgZ: (z1 + z2) / 2,
+          isHighlighted: isHighlighted
+        });
+
+        // Node 1 (Strand A)
+        elements.push({
+          type: 'node',
+          strand: 'A',
+          x: x1,
+          y: y,
+          z: z1,
+          isHighlighted: isHighlighted
+        });
+
+        // Node 2 (Strand B)
+        elements.push({
+          type: 'node',
+          strand: 'B',
+          x: x2,
+          y: y,
+          z: z2,
+          isHighlighted: isHighlighted
+        });
+      }
+
+      // Sort elements by Z-depth (back to front)
+      elements.sort((a, b) => (a.avgZ !== undefined ? a.avgZ : a.z) - (b.avgZ !== undefined ? b.avgZ : b.z));
+
+      // Draw connecting strands
+      for (let s = 0; s < 2; s++) {
+        ctx.beginPath();
+        for (let i = 0; i <= numPairs; i++) {
+          const y = (i / numPairs) * (h - 24) + 12;
+          const theta = angleOffset + (i * 0.38) + (s * Math.PI);
+          const x = centerX + Math.cos(theta) * radius;
+          if (i === 0) ctx.moveTo(x, y);
+          else ctx.lineTo(x, y);
+        }
+        ctx.strokeStyle = 'rgba(228, 222, 207, 0.4)';
+        ctx.lineWidth = 1.6;
+        ctx.stroke();
+
+        // Highlighted active portion of strand
+        if (scrollPercent > 0) {
+          ctx.beginPath();
+          const activeMaxY = scrollPercent * h;
+          for (let i = 0; i <= numPairs; i++) {
+            const y = (i / numPairs) * (h - 24) + 12;
+            if (y > activeMaxY + 12) break;
+            const theta = angleOffset + (i * 0.38) + (s * Math.PI);
+            const x = centerX + Math.cos(theta) * radius;
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+          }
+          ctx.strokeStyle = '#C6A356';
+          ctx.lineWidth = 2.4;
+          ctx.stroke();
+        }
+      }
+
+      // Draw depth-sorted rungs & nodes
+      elements.forEach(el => {
+        if (el.type === 'rung') {
+          const alpha = 0.3 + (el.avgZ + 1) * 0.35;
+          ctx.beginPath();
+          ctx.moveTo(el.x1, el.y);
+          ctx.lineTo(el.x2, el.y);
+          ctx.strokeStyle = el.isHighlighted ? `rgba(198, 163, 86, ${alpha})` : `rgba(228, 222, 207, ${alpha * 0.5})`;
+          ctx.lineWidth = 1.2 + (el.avgZ + 1) * 0.5;
+          ctx.stroke();
+        } else if (el.type === 'node') {
+          const depthScale = 0.6 + (el.z + 1) * 0.4;
+          const nodeRadius = 2.2 * depthScale;
+          const alpha = 0.35 + (el.z + 1) * 0.35;
+
+          ctx.beginPath();
+          ctx.arc(el.x, el.y, nodeRadius, 0, Math.PI * 2);
+          ctx.fillStyle = el.isHighlighted ? `rgba(198, 163, 86, ${alpha})` : `rgba(228, 222, 207, ${alpha * 0.6})`;
+          ctx.fill();
+        }
+      });
+
+      requestAnimationFrame(draw3DDNA);
+    };
+
+    draw3DDNA();
+  }
+
+  // 5. Scroll reveal animation (IntersectionObserver)
+  const revealElements = document.querySelectorAll('.reveal, .reveal-stagger');
+  if ('IntersectionObserver' in window && revealElements.length > 0) {
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12 });
+
+    revealElements.forEach(el => revealObserver.observe(el));
+  } else {
+    // Fallback for older browsers
+    revealElements.forEach(el => el.classList.add('in'));
+  }
+
+  // 6. Filter Tabs
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const filterItems = document.querySelectorAll('.filter-item');
+  if (tabBtns.length > 0 && filterItems.length > 0) {
+    tabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        tabBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        const category = btn.getAttribute('data-tab');
+        filterItems.forEach(item => {
+          const itemCat = item.getAttribute('data-category');
+          if (category === 'all' || itemCat === category) {
+            item.style.display = 'block';
+            setTimeout(() => { item.style.opacity = '1'; item.style.transform = 'translateY(0)'; }, 50);
+          } else {
+            item.style.opacity = '0';
+            item.style.transform = 'translateY(10px)';
+            setTimeout(() => { item.style.display = 'none'; }, 300);
+          }
+        });
+      });
+    });
+  }
+
+  // 7. Modal Handlers
+  const modalTriggers = document.querySelectorAll('[data-modal]');
+  const modalBackdrops = document.querySelectorAll('.modal-backdrop');
+  const modalCloses = document.querySelectorAll('.modal-close');
+
+  modalTriggers.forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const modalId = trigger.getAttribute('data-modal');
+      const targetModal = document.getElementById(modalId);
+      if (targetModal) {
+        targetModal.classList.add('active');
+      }
+    });
+  });
+
+  modalCloses.forEach(close => {
+    close.addEventListener('click', () => {
+      close.closest('.modal-backdrop').classList.remove('active');
+    });
+  });
+
+  modalBackdrops.forEach(backdrop => {
+    backdrop.addEventListener('click', (e) => {
+      if (e.target === backdrop) {
+        backdrop.classList.remove('active');
+      }
+    });
+  });
+
+  // 8. Form Submit Interceptor
+  const forms = document.querySelectorAll('form');
+  forms.forEach(form => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const btn = form.querySelector('button[type="submit"]');
+      if (btn) {
+        const originalText = btn.innerHTML;
+        btn.innerHTML = '<i class="fa-solid fa-spinner fa-spin"></i> Submitting...';
+        btn.disabled = true;
+
+        setTimeout(() => {
+          btn.innerHTML = '<i class="fa-solid fa-circle-check"></i> Submitted Successfully!';
+          btn.style.background = '#28a745';
+          btn.style.borderColor = '#28a745';
+
+          setTimeout(() => {
+            form.reset();
+            btn.innerHTML = originalText;
+            btn.style.background = '';
+            btn.style.borderColor = '';
+            btn.disabled = false;
+          }, 3000);
+        }, 1200);
+      }
+    });
+  });
+});

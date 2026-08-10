@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Membership — Frontier Research and Innovation Foundation</title>
+<meta name="description" content="Join Frontier Research and Innovation Foundation as a Scholar Member, Institutional Fellow, or Student Associate.">
+<meta name="theme-color" content="#0B192C">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="canonical" href="https://www.frinf.org/membership.html">
+<meta property="og:title" content="Membership — Frontier Research and Innovation Foundation">
+<meta property="og:description" content="Apply for academic membership and research grants at Frontier Research and Innovation Foundation.">
+<meta property="og:image" content="images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/components.js"></script>
+</head>
+<body>
+
+<!-- ANIMATED PRELOADER SCREEN -->
+<div id="preloader" class="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo-wrap">
+      <div class="preloader-ring"></div>
+      <img src="images/logo.png" alt="Frontier Research and Innovation Foundation" class="preloader-logo">
+    </div>
+    <div class="preloader-title">Frontier Research &amp; Innovation Foundation</div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar" id="preloaderBar"></div>
+    </div>
+    <div class="preloader-status">
+      <span id="preloaderPercent">0%</span>
+    </div>
+  </div>
+</div>
+
+<div id="helix-rail" aria-hidden="true">
+  <canvas id="dnaCanvas" width="44" height="900"></canvas>
+</div>
+
+<div id="header-placeholder"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> <span>Membership</span>
+      </div>
+      <span class="eyebrow">Become a Member</span>
+      <h1>Shape the research &amp; development agenda of tomorrow.</h1>
+      <p class="lead">Membership connects researchers, doctors, students, and social innovators across Bangladesh and internationally to collaborate, vote on foundation priorities, and access grant funding.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MEMBERSHIP TIERS -->
+<section style="background:var(--white);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Select Your Tier</span>
+      <h2>Membership Categories &amp; Pricing</h2>
+    </div>
+
+    <div class="tier-grid reveal-stagger">
+      <!-- Tier 1 -->
+      <div class="tier-card stagger-item">
+        <div>
+          <h3>Student Associate</h3>
+          <p>For undergraduate &amp; graduate students enrolled in accredited institutions.</p>
+          <div class="tier-price">BDT 1,500 <span style="font-size:14px;font-weight:400;color:var(--ink-soft);">/ year</span></div>
+          <ul class="tier-features">
+            <li><i class="fa-solid fa-check"></i> Access to research methodology workshops</li>
+            <li><i class="fa-solid fa-check"></i> Student paper submission discounts</li>
+            <li><i class="fa-solid fa-check"></i> Mentorship program eligibility</li>
+            <li><i class="fa-solid fa-check"></i> Digital member certificate</li>
+          </ul>
+        </div>
+        <a href="#apply-form" class="btn btn-ghost" style="width:100%;justify-content:center;">Apply as Student</a>
+      </div>
+
+      <!-- Tier 2 (Featured) -->
+      <div class="tier-card featured stagger-item">
+        <span class="tier-badge">Most Popular</span>
+        <div>
+          <h3>Professional Fellow</h3>
+          <p>For academics, medical doctors, researchers &amp; NGO leaders.</p>
+          <div class="tier-price">BDT 5,000 <span style="font-size:14px;font-weight:400;color:var(--gold-300);">/ year</span></div>
+          <ul class="tier-features">
+            <li><i class="fa-solid fa-check"></i> Voting rights at Annual General Meeting</li>
+            <li><i class="fa-solid fa-check"></i> Eligibility to apply for Foundation Research Grants</li>
+            <li><i class="fa-solid fa-check"></i> Free access to Annual Symposium</li>
+            <li><i class="fa-solid fa-check"></i> Executive committee nomination rights</li>
+            <li><i class="fa-solid fa-check"></i> Peer-review board eligibility</li>
+          </ul>
+        </div>
+        <a href="#apply-form" class="btn btn-gold" style="width:100%;justify-content:center;">Apply as Fellow</a>
+      </div>
+
+      <!-- Tier 3 -->
+      <div class="tier-card stagger-item">
+        <div>
+          <h3>Honorary Life Member</h3>
+          <p>Lifetime affiliation for senior experts &amp; institutional benefactors.</p>
+          <div class="tier-price">BDT 25,000 <span style="font-size:14px;font-weight:400;color:var(--ink-soft);">/ one-time</span></div>
+          <ul class="tier-features">
+            <li><i class="fa-solid fa-check"></i> Permanent Lifetime Membership status</li>
+            <li><i class="fa-solid fa-check"></i> Keynote speaker invitations at conferences</li>
+            <li><i class="fa-solid fa-check"></i> Direct Advisory Board seat option</li>
+            <li><i class="fa-solid fa-check"></i> Wall of Honor recognition</li>
+          </ul>
+        </div>
+        <a href="#apply-form" class="btn btn-ghost" style="width:100%;justify-content:center;">Apply for Life Tier</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ONLINE APPLICATION FORM -->
+<section class="contact" id="apply-form" style="background:var(--cream-deep);">
+  <div class="container">
+    <div class="section-head center reveal">
+      <span class="eyebrow">Online Registration</span>
+      <h2>Apply for Foundation Membership</h2>
+    </div>
+
+    <div style="max-width:800px;margin:0 auto;" class="reveal">
+      <form class="form-card">
+        <div class="form-row">
+          <div class="field"><label>Full Name</label><input type="text" placeholder="Dr. / Mr. / Ms. Your Name" required></div>
+          <div class="field"><label>Email Address</label><input type="email" placeholder="you@example.com" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field"><label>Phone Number</label><input type="tel" placeholder="+880 1700 000000" required></div>
+          <div class="field">
+            <label>Membership Category</label>
+            <select required style="background:transparent;border:none;border-bottom:1.5px solid var(--line);padding:12px 2px;">
+              <option value="professional">Professional Fellow (BDT 5,000/yr)</option>
+              <option value="student">Student Associate (BDT 1,500/yr)</option>
+              <option value="life">Honorary Life Member (BDT 25,000)</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label>Organization / University &amp; Designation</label><input type="text" placeholder="e.g. Associate Professor, Dhaka University" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label>Primary Research / Expertise Domain</label><input type="text" placeholder="e.g. Public Health, Bio-statistics, Clinical Medicine, Social Work" required></div>
+        </div>
+        <div class="form-row">
+          <div class="field full"><label>Brief Statement of Purpose</label><textarea rows="3" placeholder="Why do you wish to join the foundation and how can you contribute?" required></textarea></div>
+        </div>
+        <button type="submit" class="btn btn-primary" style="width:100%;justify-content:center;">Submit Application <i class="fa-solid fa-arrow-right"></i></button>
+      </form>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<script src="js/main.js"></script>
+</body>
+</html>
