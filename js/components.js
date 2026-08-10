@@ -17,9 +17,6 @@
       { name: 'About Us', link: 'about.html', icon: 'fa-building-columns' },
       { name: 'Committee', link: 'committee.html', icon: 'fa-users' },
       { name: 'Programs', link: 'programs.html', icon: 'fa-diagram-project' },
-      { name: 'Membership', link: 'membership.html', icon: 'fa-id-card' },
-      { name: 'Awards', link: 'awards.html', icon: 'fa-award' },
-      { name: 'Conferences', link: 'conferences.html', icon: 'fa-calendar-check' },
       { name: 'Contact', link: 'contact.html', icon: 'fa-paper-plane' }
     ];
 
