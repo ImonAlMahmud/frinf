@@ -44,10 +44,11 @@
 
       <div class="nav-links" id="navLinks">
         ${navLinksHTML}
+        <a href="donate.html" class="btn btn-gold mobile-donate-btn"><i class="fa-solid fa-heart"></i> Donate Now</a>
       </div>
 
       <div class="nav-cta">
-        <a href="donate.html" class="btn btn-gold"><i class="fa-solid fa-heart"></i> Donate</a>
+        <a href="donate.html" class="btn btn-gold desktop-donate-btn"><i class="fa-solid fa-heart"></i> Donate</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
         </button>

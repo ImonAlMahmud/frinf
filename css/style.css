@@ -475,6 +475,10 @@ header.scrolled .brand-text b {
   box-shadow: 0 4px 15px rgba(198, 163, 86, 0.3);
 }
 
+.mobile-donate-btn {
+  display: none !important;
+}
+
 .menu-toggle {
   display: none;
   background: none;
@@ -500,11 +504,37 @@ header.scrolled .brand-text b {
     padding: 8px 14px;
     border-radius: 30px;
   }
+  .desktop-donate-btn {
+    display: none !important;
+  }
+  .mobile-donate-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    margin-top: 15px;
+    width: 100%;
+    border-radius: 50px;
+    padding: 12px 20px;
+    font-size: 15px;
+    box-shadow: 0 4px 15px rgba(198, 163, 86, 0.4);
+    background: var(--gold-500);
+    color: var(--navy-900) !important;
+  }
+  .brand-text {
+    display: block !important;
+  }
   .brand-text b {
+    display: block !important;
     font-size: 13.5px;
+    color: var(--navy-900);
+    white-space: nowrap;
   }
   .brand-text span {
+    display: block !important;
     font-size: 8px;
+    color: var(--gold-600);
+    white-space: nowrap;
   }
   .nav-links {
     position: fixed;
@@ -516,9 +546,9 @@ header.scrolled .brand-text b {
     background: var(--navy-900);
     flex-direction: column;
     justify-content: center;
-    gap: 24px;
+    gap: 20px;
     transition: right .5s var(--ease);
-    padding: 40px;
+    padding: 40px 24px;
     z-index: 200;
     pointer-events: auto;
   }
@@ -547,6 +577,15 @@ header.scrolled .brand-text b {
   }
   .nav-cta .btn-ghost {
     display: none;
+  }
+}
+
+@media (max-width: 480px) {
+  .brand-text b {
+    font-size: 11.5px;
+  }
+  .brand-text span {
+    font-size: 7px;
   }
 }
 
