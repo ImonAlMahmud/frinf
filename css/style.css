@@ -63,8 +63,8 @@ ul {
 /* Typography & Utilities */
 .eyebrow {
   font-family: 'Space Mono', monospace;
-  font-size: 12.5px;
-  letter-spacing: .16em;
+  font-size: 12px;
+  letter-spacing: .18em;
   text-transform: uppercase;
   color: var(--gold-600);
   display: inline-flex;
@@ -75,16 +75,45 @@ ul {
 
 .eyebrow::before {
   content: '';
-  width: 22px;
-  height: 1px;
+  width: 26px;
+  height: 1.5px;
   background: var(--gold-600);
   display: inline-block;
+}
+
+/* Editorial Fine-Line & Stamp Accents */
+.stamp-badge {
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  background: var(--cream-deep);
+  color: var(--navy-900);
+  border: 1px solid var(--line);
+  padding: 4px 10px;
+  border-radius: 3px;
+  display: inline-block;
+}
+
+.editorial-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-top: 3px double var(--gold-600);
+  padding: 32px 28px;
+  position: relative;
+  transition: all .35s var(--ease);
+}
+
+.editorial-card:hover {
+  border-color: var(--gold-500);
+  box-shadow: 0 12px 30px -10px rgba(11,25,44,0.12);
+  transform: translateY(-3px);
 }
 
 h1, h2, h3, h4 {
   font-family: 'Fraunces', serif;
   color: var(--navy-900);
-  line-height: 1.08;
+  line-height: 1.12;
   font-weight: 600;
   letter-spacing: -.01em;
 }
@@ -1115,14 +1144,16 @@ section {
 .member-card {
   background: var(--white);
   border: 1px solid var(--line);
+  border-top: 3px double var(--gold-600);
   padding: 36px 30px;
   transition: all .35s var(--ease);
   position: relative;
+  border-radius: 4px;
 }
 
 .member-card:hover {
   transform: translateY(-4px);
-  box-shadow: var(--shadow-sm);
+  box-shadow: 0 14px 35px -12px rgba(11,25,44,0.14);
   border-color: var(--gold-500);
 }
 
