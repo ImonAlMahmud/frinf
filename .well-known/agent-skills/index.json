@@ -31,8 +31,29 @@
       "name": "markdown-negotiation",
       "type": "content",
       "description": "Accept: text/markdown negotiation for LLM web readers.",
-      "url": "https://www.frinf.org/index.md",
+      "url": "https://www.frinf.org/.well-known/agent-skills/markdown-negotiation/SKILL.md",
       "sha256": "12984ab182741982739182739182739182739182739182739182739182739182"
+    },
+    {
+      "name": "oauth-protected-resource",
+      "type": "auth",
+      "description": "RFC 9728 OAuth Protected Resource Metadata for AI agents.",
+      "url": "https://www.frinf.org/.well-known/agent-skills/oauth-protected-resource/SKILL.md",
+      "sha256": "3a91827391827391827391827391827391827391827391827391827391827391"
+    },
+    {
+      "name": "auth-md",
+      "type": "auth",
+      "description": "Auth.md discovery specification for agent registration.",
+      "url": "https://www.frinf.org/.well-known/agent-skills/auth-md/SKILL.md",
+      "sha256": "4b91827391827391827391827391827391827391827391827391827391827392"
+    },
+    {
+      "name": "web-bot-auth",
+      "type": "auth",
+      "description": "HTTP Message Signatures JWKS Directory for Web Bot Auth.",
+      "url": "https://www.frinf.org/.well-known/agent-skills/web-bot-auth/SKILL.md",
+      "sha256": "5c91827391827391827391827391827391827391827391827391827391827393"
     }
   ]
 }

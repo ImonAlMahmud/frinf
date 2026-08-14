@@ -33,7 +33,7 @@
       },
       {
         name: "get_executive_committee",
-        description: "Retrieve Executive Committee directory of Pransikha Foundation.",
+        description: "Retrieve Executive Committee directory of Frontier Research & Innovation Foundation.",
         inputSchema: {
           type: "object",
           properties: {

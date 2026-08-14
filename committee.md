@@ -1,6 +1,6 @@
-# Executive Committee — Pransikha Foundation
+# Executive Committee — Frontier Research & Innovation Foundation
 
-The Executive Committee of Pransikha Foundation (Frontier Research and Innovation Foundation) steers institutional governance, research grants, and social welfare programs across Bangladesh.
+The Executive Committee of Frontier Research & Innovation Foundation steers institutional governance, research grants, and social welfare programs across Bangladesh.
 
 ## Executive Officers
 

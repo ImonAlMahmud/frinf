@@ -4,12 +4,16 @@
   "token_endpoint": "https://www.frinf.org/oauth/token",
   "revocation_endpoint": "https://www.frinf.org/oauth/revoke",
   "introspection_endpoint": "https://www.frinf.org/oauth/introspect",
-  "jwks_uri": "https://www.frinf.org/.well-known/jwks.json",
+  "registration_endpoint": "https://www.frinf.org/oauth/agent-register",
+  "jwks_uri": "https://www.frinf.org/.well-known/http-message-signatures-directory",
   "scopes_supported": [
     "agent:read",
     "agent:write",
     "research:access",
-    "grant:apply"
+    "grant:apply",
+    "openid",
+    "profile",
+    "email"
   ],
   "response_types_supported": [
     "code",
@@ -18,20 +22,42 @@
   "grant_types_supported": [
     "authorization_code",
     "client_credentials",
-    "refresh_token"
+    "refresh_token",
+    "urn:ietf:params:oauth:grant-type:token-exchange"
+  ],
+  "token_endpoint_auth_methods_supported": [
+    "client_secret_basic",
+    "client_secret_post",
+    "private_key_jwt"
   ],
   "agent_auth": {
+    "skill": "https://www.frinf.org/.well-known/agent-skills/auth-md/SKILL.md",
     "register_uri": "https://www.frinf.org/oauth/agent-register",
-    "supported_identity_types": [
-      "autonomous_agent",
-      "user_delegated"
+    "identity_types_supported": [
+      "identity_assertion",
+      "verified_email",
+      "anonymous"
     ],
-    "credential_types": [
-      "bearer_token",
-      "mtls",
-      "jwt_bearer"
-    ],
-    "claim_url": "https://www.frinf.org/auth.md",
-    "revocation_url": "https://www.frinf.org/oauth/revoke"
+    "identity_assertion": {
+      "assertion_types_supported": [
+        "urn:ietf:params:oauth:token-type:id-jag",
+        "verified_email"
+      ],
+      "credential_types_supported": [
+        "bearer_token",
+        "json_web_token"
+      ]
+    },
+    "anonymous": {
+      "credential_types_supported": [
+        "bearer_token"
+      ]
+    },
+    "claim_uri": "https://www.frinf.org/auth.md",
+    "revocation_uri": "https://www.frinf.org/oauth/revoke",
+    "events_supported": [
+      "revocation",
+      "expiry"
+    ]
   }
 }

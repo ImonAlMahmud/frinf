@@ -1,0 +1,73 @@
+/*
+  Vary: Accept
+  Access-Control-Allow-Origin: *
+
+/*.md
+  Content-Type: text/markdown; charset=utf-8
+  Vary: Accept
+  Access-Control-Allow-Origin: *
+
+/index.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 320
+
+/about.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 220
+
+/awards.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 245
+
+/committee.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 515
+
+/conferences.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 288
+
+/contact.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 102
+
+/donate.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 212
+
+/gallery.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 348
+
+/governance.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 262
+
+/membership.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 280
+
+/privacy-policy.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 275
+
+/programs.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 234
+
+/terms-of-service.md
+  Content-Type: text/markdown; charset=utf-8
+  x-markdown-tokens: 255
+
+/.well-known/oauth-protected-resource
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
+/.well-known/oauth-authorization-server
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
+/.well-known/http-message-signatures-directory
+  Content-Type: application/json
+  Access-Control-Allow-Origin: *
+
