@@ -1,0 +1,43 @@
+{
+  "linkset": [
+    {
+      "anchor": "https://www.frinf.org/api/v1",
+      "service-desc": [
+        {
+          "href": "https://www.frinf.org/docs/openapi.json",
+          "type": "application/openapi+json"
+        }
+      ],
+      "service-doc": [
+        {
+          "href": "https://www.frinf.org/docs/api",
+          "type": "text/html"
+        }
+      ],
+      "status": [
+        {
+          "href": "https://www.frinf.org/api/v1/health",
+          "type": "application/json"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.frinf.org/api/v1/programs",
+      "item": [
+        {
+          "href": "https://www.frinf.org/programs.html",
+          "type": "text/html"
+        }
+      ]
+    },
+    {
+      "anchor": "https://www.frinf.org/api/v1/committee",
+      "item": [
+        {
+          "href": "https://www.frinf.org/committee.html",
+          "type": "text/html"
+        }
+      ]
+    }
+  ]
+}

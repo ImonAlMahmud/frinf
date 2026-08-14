@@ -1,0 +1,67 @@
+{
+  "$schema": "https://raw.githubusercontent.com/modelcontextprotocol/modelcontextprotocol/main/schema/server-card.json",
+  "serverInfo": {
+    "name": "Frontier Research & Innovation Foundation MCP Server",
+    "version": "1.0.0",
+    "description": "Official Model Context Protocol server exposing public health research databases, committee directory, research grants catalog, and community programs in Bangladesh."
+  },
+  "transport": {
+    "type": "sse",
+    "endpoint": "https://www.frinf.org/api/mcp/sse"
+  },
+  "capabilities": {
+    "tools": {
+      "listChanged": false
+    },
+    "resources": {
+      "subscribe": false,
+      "listChanged": false
+    },
+    "prompts": {
+      "listChanged": false
+    }
+  },
+  "tools": [
+    {
+      "name": "search_research_programs",
+      "description": "Search public health, medical research, and emergency relief programs of Pransikha Foundation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "query": {
+            "type": "string",
+            "description": "Keyword search for research program or domain"
+          }
+        },
+        "required": ["query"]
+      }
+    },
+    {
+      "name": "get_executive_committee",
+      "description": "Get the official directory of Executive Committee members of Pransikha Foundation.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["all", "governing", "secretariat"],
+            "description": "Committee section filter"
+          }
+        }
+      }
+    },
+    {
+      "name": "get_photo_gallery",
+      "description": "Get gallery images and event metadata from meetings, conferences, and relief camps.",
+      "inputSchema": {
+        "type": "object",
+        "properties": {
+          "category": {
+            "type": "string",
+            "enum": ["all", "meetings", "conferences", "relief", "workshops"]
+          }
+        }
+      }
+    }
+  ]
+}

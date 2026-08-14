@@ -10,18 +10,21 @@
     const headerPlaceholder = document.getElementById('header-placeholder') || document.getElementById('siteHeader');
     if (!headerPlaceholder) return;
 
-    const currentPath = window.location.pathname.split('/').pop() || 'index.html';
+    let rawPath = window.location.pathname.split('/').pop().toLowerCase();
+    if (!rawPath || rawPath === '') rawPath = 'index.html';
 
     const navItems = [
       { name: 'Home', link: 'index.html', icon: 'fa-house' },
       { name: 'About Us', link: 'about.html', icon: 'fa-building-columns' },
       { name: 'Committee', link: 'committee.html', icon: 'fa-users' },
       { name: 'Programs', link: 'programs.html', icon: 'fa-diagram-project' },
+      { name: 'Gallery', link: 'gallery.html', icon: 'fa-images' },
       { name: 'Contact', link: 'contact.html', icon: 'fa-paper-plane' }
     ];
 
     const navLinksHTML = navItems.map(item => {
-      const isActive = (item.link === currentPath) || (currentPath === '' && item.link === 'index.html');
+      const itemLink = item.link.toLowerCase();
+      const isActive = (itemLink === rawPath) || (rawPath === 'index.html' && itemLink === 'index.html');
       return `<a href="${item.link}" class="${isActive ? 'active' : ''}"><i class="fa-solid ${item.icon} nav-icon"></i><span>${item.name}</span></a>`;
     }).join('');
 
@@ -158,6 +161,7 @@
           <li><a href="about.html">About Foundation</a></li>
           <li><a href="committee.html">Executive Committee</a></li>
           <li><a href="programs.html">Research &amp; Programs</a></li>
+          <li><a href="gallery.html">Photo Gallery</a></li>
           <li><a href="membership.html">Join Membership</a></li>
           <li><a href="awards.html">Grants &amp; Awards</a></li>
           <li><a href="conferences.html">Conferences 2026</a></li>
@@ -207,6 +211,13 @@
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
+
+    if (!document.querySelector('script[src*="webmcp.js"]')) {
+      const s = document.createElement('script');
+      s.src = 'js/webmcp.js';
+      s.async = true;
+      document.head.appendChild(s);
+    }
   });
 
 })();

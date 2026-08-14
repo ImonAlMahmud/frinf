@@ -1057,8 +1057,8 @@ section {
 }
 
 .member-avatar {
-  width: 80px;
-  height: 80px;
+  width: 90px;
+  height: 90px;
   border-radius: 50%;
   background: var(--cream-deep);
   border: 2px solid var(--line);
@@ -1068,6 +1068,46 @@ section {
   font-size: 28px;
   color: var(--navy-900);
   margin-bottom: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  flex-shrink: 0;
+}
+
+.member-avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 50%;
+}
+
+.member-detail-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 15px;
+  font-size: 13.5px;
+}
+
+.member-detail-table tr {
+  border-bottom: 1px solid var(--line);
+}
+
+.member-detail-table td {
+  padding: 8px 12px;
+  vertical-align: top;
+}
+
+.member-detail-table td.label-td {
+  font-weight: 600;
+  color: var(--navy-900);
+  width: 38%;
+  background: var(--cream-deep);
+  font-size: 12.5px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.member-detail-table td.value-td {
+  color: var(--ink);
 }
 
 .member-card h4 {

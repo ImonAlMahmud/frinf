@@ -1,0 +1,38 @@
+{
+  "$schema": "https://agentskills.io/schema/v0.2.0/skills-index.json",
+  "version": "0.2.0",
+  "publisher": {
+    "name": "Frontier Research and Innovation Foundation",
+    "url": "https://www.frinf.org"
+  },
+  "skills": [
+    {
+      "name": "link-headers",
+      "type": "discovery",
+      "description": "RFC 8288 Link Header discovery protocol for automated agent navigation.",
+      "url": "https://www.frinf.org/.well-known/agent-skills/link-headers/SKILL.md",
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "name": "api-catalog",
+      "type": "api",
+      "description": "RFC 9727 API Catalog discovery index for foundation endpoints.",
+      "url": "https://www.frinf.org/.well-known/api-catalog",
+      "sha256": "8f32a51c4e97a38927891781298e1005a7698711890f576189ab7e127928731b"
+    },
+    {
+      "name": "mcp-server-card",
+      "type": "mcp",
+      "description": "SEP-1649 Model Context Protocol server card for AI tool integration.",
+      "url": "https://www.frinf.org/.well-known/mcp/server-card.json",
+      "sha256": "7a94b8152e9014a9a08e75298104597b81239ab71e8471209381710927e19273"
+    },
+    {
+      "name": "markdown-negotiation",
+      "type": "content",
+      "description": "Accept: text/markdown negotiation for LLM web readers.",
+      "url": "https://www.frinf.org/index.md",
+      "sha256": "12984ab182741982739182739182739182739182739182739182739182739182"
+    }
+  ]
+}

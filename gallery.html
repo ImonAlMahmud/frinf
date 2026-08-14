@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Photo Gallery &amp; Events — Frontier Research and Innovation Foundation</title>
+<meta name="description" content="Explore photos from foundation meetings, scientific conferences, community relief efforts, workshops, and MoU ceremonies of Pransikha Foundation.">
+<meta name="keywords" content="FRINF gallery, research foundation photos, Dhaka board meetings, Bangladesh scientific conference, relief photos">
+<meta name="author" content="Frontier Research and Innovation Foundation">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0B192C">
+<link rel="icon" href="images/logo.png" type="image/png">
+<link rel="apple-touch-icon" href="images/logo.png">
+<link rel="canonical" href="https://www.frinf.org/gallery.html">
+
+<!-- Open Graph / Facebook Meta Tags -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Frontier Research and Innovation Foundation">
+<meta property="og:url" content="https://www.frinf.org/gallery.html">
+<meta property="og:title" content="Photo Gallery &amp; Events — Frontier Research and Innovation Foundation">
+<meta property="og:description" content="High resolution photos of foundation board meetings, academic symposia, field research, and humanitarian relief in Bangladesh.">
+<meta property="og:image" content="https://www.frinf.org/images/logo.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Frontier Research and Innovation Foundation Logo">
+<meta property="og:locale" content="en_US">
+
+<!-- X / Twitter Card Meta Tags -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="@frinf_org">
+<meta name="twitter:creator" content="@frinf_org">
+<meta name="twitter:title" content="Photo Gallery — Frontier Research and Innovation Foundation">
+<meta name="twitter:description" content="Photos from meetings, conferences, workshops, and relief programs.">
+<meta name="twitter:image" content="https://www.frinf.org/images/logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Manrope:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="css/style.css">
+<script src="js/components.js"></script>
+
+<style>
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 28px;
+  margin-top: 30px;
+}
+
+.gallery-card {
+  background: var(--white);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  transition: all .35s var(--ease);
+  position: relative;
+}
+
+.gallery-card:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--shadow);
+  border-color: var(--gold-500);
+}
+
+.gallery-img-wrap {
+  width: 100%;
+  height: 230px;
+  overflow: hidden;
+  position: relative;
+  background: var(--navy-900);
+}
+
+.gallery-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.gallery-card:hover .gallery-img-wrap img {
+  transform: scale(1.06);
+}
+
+.gallery-badge {
+  position: absolute;
+  top: 14px;
+  left: 14px;
+  background: rgba(11, 25, 44, 0.75);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: var(--gold-400);
+  font-family: 'Space Mono', monospace;
+  font-size: 11px;
+  text-transform: uppercase;
+  padding: 4px 10px;
+  border-radius: 50px;
+  border: 1px solid rgba(198, 163, 86, 0.3);
+  z-index: 2;
+}
+
+.gallery-content {
+  padding: 22px;
+}
+
+.gallery-content h4 {
+  font-size: 18px;
+  color: var(--navy-900);
+  margin-bottom: 8px;
+  line-height: 1.35;
+}
+
+.gallery-content p {
+  font-size: 13.5px;
+  color: var(--ink-soft);
+  line-height: 1.6;
+  margin: 0 0 16px;
+}
+
+.gallery-footer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  font-size: 12.5px;
+  color: var(--gold-600);
+  font-family: 'Space Mono', monospace;
+}
+
+/* Lightbox Modal */
+.lightbox-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(11, 25, 44, 0.92);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  z-index: 600;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity .35s var(--ease);
+}
+
+.lightbox-modal.active {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.lightbox-content {
+  max-width: 900px;
+  width: 100%;
+  background: var(--navy-900);
+  border: 1px solid var(--gold-500);
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+}
+
+.lightbox-img-wrap {
+  width: 100%;
+  max-height: 520px;
+  overflow: hidden;
+  background: #000;
+}
+
+.lightbox-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.lightbox-info {
+  padding: 24px;
+  color: var(--white);
+}
+
+.lightbox-info h3 {
+  font-size: 22px;
+  color: var(--gold-400);
+  margin-bottom: 8px;
+}
+
+.lightbox-info p {
+  font-size: 14px;
+  color: rgba(255,255,255,0.8);
+  margin: 0;
+  line-height: 1.6;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  border: none;
+  color: #fff;
+  font-size: 20px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background 0.2s;
+  z-index: 10;
+}
+
+.lightbox-close:hover {
+  background: var(--gold-500);
+}
+</style>
+</head>
+<body>
+
+<!-- ANIMATED PRELOADER SCREEN -->
+<div id="preloader" class="preloader">
+  <div class="preloader-inner">
+    <div class="preloader-logo-wrap">
+      <div class="preloader-ring"></div>
+      <img src="images/logo.png" alt="Frontier Research and Innovation Foundation" class="preloader-logo">
+    </div>
+    <div class="preloader-title">Frontier Research &amp; Innovation Foundation</div>
+    <div class="preloader-bar-wrap">
+      <div class="preloader-bar" id="preloaderBar"></div>
+    </div>
+    <div class="preloader-status">
+      <span id="preloaderPercent">0%</span>
+    </div>
+  </div>
+</div>
+
+<div id="helix-rail" aria-hidden="true">
+  <canvas id="dnaCanvas" width="44" height="900"></canvas>
+</div>
+
+<div id="header-placeholder"></div>
+
+<!-- PAGE HERO -->
+<section class="page-hero">
+  <div class="container">
+    <div class="page-hero-inner reveal">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a> <i class="fa-solid fa-chevron-right" style="font-size:10px;"></i> <span>Photo Gallery</span>
+      </div>
+      <span class="eyebrow">Visual Chronicle</span>
+      <h1>Meetings, Events &amp; Field Operations</h1>
+      <p class="lead">Highlights from executive committee meetings, academic symposia, humanitarian relief initiatives, youth workshops, and research partnerships across Bangladesh.</p>
+    </div>
+  </div>
+</section>
+
+<!-- MAIN GALLERY SECTION -->
+<section style="background:var(--cream-deep); padding: 70px 0 100px;">
+  <div class="container">
+
+    <!-- Filter Tabs -->
+    <div class="filter-tabs reveal">
+      <button class="tab-btn active" data-tab="all">All Photos</button>
+      <button class="tab-btn" data-tab="meetings">Executive Meetings</button>
+      <button class="tab-btn" data-tab="conferences">Conferences &amp; MoUs</button>
+      <button class="tab-btn" data-tab="relief">Relief &amp; Field Ops</button>
+      <button class="tab-btn" data-tab="workshops">Workshops</button>
+    </div>
+
+    <!-- Gallery Grid -->
+    <div class="gallery-grid reveal-stagger">
+
+      <!-- Item 1: Board Meeting -->
+      <div class="gallery-card stagger-item filter-item" data-category="meetings">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">Executive Meeting</span>
+          <img src="images/events/meeting.png" alt="Executive Board Meeting">
+        </div>
+        <div class="gallery-content">
+          <h4>Executive Committee Board Session</h4>
+          <p>Directors and committee members convening at the Dhaka secretariat to review annual research grants and strategic programs.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Dhaka Secretariat</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/meeting.png" data-title="Executive Committee Board Session" data-desc="Executive Committee members of Pransikha Foundation holding strategic governance meeting in Dhaka." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 2: Conference -->
+      <div class="gallery-card stagger-item filter-item" data-category="conferences">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">Conference</span>
+          <img src="images/events/conference.png" alt="Annual Scientific Symposium">
+        </div>
+        <div class="gallery-content">
+          <h4>Annual Scientific Innovation Symposium</h4>
+          <p>Keynote presentation and academic discussion panel on public health innovation and medical research advancements in Bangladesh.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Dhaka Auditorium</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/conference.png" data-title="Annual Scientific Innovation Symposium" data-desc="Academics, clinicians, and researchers gathering for the annual foundation symposium." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 3: Community Relief -->
+      <div class="gallery-card stagger-item filter-item" data-category="relief">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">Field Relief</span>
+          <img src="images/events/community_relief.png" alt="Community Health & Relief">
+        </div>
+        <div class="gallery-content">
+          <h4>Flood Relief &amp; Community Health Camp</h4>
+          <p>Foundation rapid response teams distributing essential healthcare packages and emergency medical support to rural communities.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Rural Division</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/community_relief.png" data-title="Flood Relief & Community Health Camp" data-desc="Foundation volunteers providing humanitarian assistance and health screening." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 4: Youth Workshop -->
+      <div class="gallery-card stagger-item filter-item" data-category="workshops">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">Workshop</span>
+          <img src="images/events/workshop.png" alt="Youth Skill Development Workshop">
+        </div>
+        <div class="gallery-content">
+          <h4>Youth Skill &amp; Tech Training Workshop</h4>
+          <p>Mentors facilitating hands-on computer science, data analytics, and research methodology sessions for university scholars.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Training Lab</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/workshop.png" data-title="Youth Skill & Tech Training Workshop" data-desc="Empowering the next generation of researchers with modern digital research tools." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 5: MoU Signing -->
+      <div class="gallery-card stagger-item filter-item" data-category="conferences">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">MoU Signing</span>
+          <img src="images/events/signing_ceremony.png" alt="MoU Signing Ceremony">
+        </div>
+        <div class="gallery-content">
+          <h4>Academic Partnership Signing Ceremony</h4>
+          <p>Formalizing collaborative research agreements with university leadership to foster joint publications and student fellowships.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Partnership Hall</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/signing_ceremony.png" data-title="Academic Partnership Signing Ceremony" data-desc="Institutional signing ceremony expanding academic research collaborations." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Item 6: Field Research -->
+      <div class="gallery-card stagger-item filter-item" data-category="relief">
+        <div class="gallery-img-wrap">
+          <span class="gallery-badge">Field Research</span>
+          <img src="images/events/field_research.png" alt="Field Research & Environmental Survey">
+        </div>
+        <div class="gallery-content">
+          <h4>Environmental &amp; Public Health Field Survey</h4>
+          <p>Interdisciplinary research teams collecting environmental samples and conducting community surveys along coastal river basins.</p>
+          <div class="gallery-footer">
+            <span><i class="fa-solid fa-calendar-days"></i> Coastal Region</span>
+            <button class="btn btn-ghost open-lightbox" data-img="images/events/field_research.png" data-title="Environmental & Public Health Field Survey" data-desc="Field researchers gathering data for climate adaptation and public health studies." style="padding:4px 12px;font-size:11px;">Zoom <i class="fa-solid fa-expand"></i></button>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- LIGHTBOX MODAL -->
+<div class="lightbox-modal" id="lightboxModal">
+  <div class="lightbox-content">
+    <button class="lightbox-close" id="lightboxClose">&times;</button>
+    <div class="lightbox-img-wrap">
+      <img src="" id="lightboxImg" alt="Gallery preview">
+    </div>
+    <div class="lightbox-info">
+      <h3 id="lightboxTitle">Event Title</h3>
+      <p id="lightboxDesc">Event Description</p>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="donate">
+  <div class="container">
+    <div class="donate-inner reveal">
+      <span class="eyebrow">Collaborate With Us</span>
+      <h2>Partner with us for upcoming conferences &amp; relief initiatives.</h2>
+      <p>Frontier Research and Innovation Foundation invites academic institutions, NGOs, and corporate partners to join hands in research and community development.</p>
+      <div class="donate-actions">
+        <a href="contact.html" class="btn btn-gold">Contact Secretariat <i class="fa-solid fa-arrow-right"></i></a>
+        <a href="conferences.html" class="btn btn-ghost" style="border-color:rgba(255,255,255,.4);color:#fff;">Upcoming Conferences</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div id="footer-placeholder"></div>
+
+<script src="js/main.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const lightboxModal = document.getElementById('lightboxModal');
+  const lightboxImg = document.getElementById('lightboxImg');
+  const lightboxTitle = document.getElementById('lightboxTitle');
+  const lightboxDesc = document.getElementById('lightboxDesc');
+  const lightboxClose = document.getElementById('lightboxClose');
+  const openButtons = document.querySelectorAll('.open-lightbox');
+
+  openButtons.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      lightboxImg.src = btn.getAttribute('data-img');
+      lightboxTitle.innerText = btn.getAttribute('data-title');
+      lightboxDesc.innerText = btn.getAttribute('data-desc');
+      lightboxModal.classList.add('active');
+    });
+  });
+
+  if (lightboxClose && lightboxModal) {
+    lightboxClose.addEventListener('click', () => {
+      lightboxModal.classList.remove('active');
+    });
+
+    lightboxModal.addEventListener('click', (e) => {
+      if (e.target === lightboxModal) {
+        lightboxModal.classList.remove('active');
+      }
+    });
+  }
+});
+</script>
+</body>
+</html>

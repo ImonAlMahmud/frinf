@@ -20,7 +20,13 @@
   </url>
   <url>
     <loc>https://www.frinf.org/programs.html</loc>
-    <lastmod>2026-08-10</lastmod>
+    <lastmod>2026-08-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.frinf.org/gallery.html</loc>
+    <lastmod>2026-08-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>

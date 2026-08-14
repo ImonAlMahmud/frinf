@@ -1,0 +1,37 @@
+{
+  "issuer": "https://www.frinf.org",
+  "authorization_endpoint": "https://www.frinf.org/oauth/authorize",
+  "token_endpoint": "https://www.frinf.org/oauth/token",
+  "revocation_endpoint": "https://www.frinf.org/oauth/revoke",
+  "introspection_endpoint": "https://www.frinf.org/oauth/introspect",
+  "jwks_uri": "https://www.frinf.org/.well-known/jwks.json",
+  "scopes_supported": [
+    "agent:read",
+    "agent:write",
+    "research:access",
+    "grant:apply"
+  ],
+  "response_types_supported": [
+    "code",
+    "token"
+  ],
+  "grant_types_supported": [
+    "authorization_code",
+    "client_credentials",
+    "refresh_token"
+  ],
+  "agent_auth": {
+    "register_uri": "https://www.frinf.org/oauth/agent-register",
+    "supported_identity_types": [
+      "autonomous_agent",
+      "user_delegated"
+    ],
+    "credential_types": [
+      "bearer_token",
+      "mtls",
+      "jwt_bearer"
+    ],
+    "claim_url": "https://www.frinf.org/auth.md",
+    "revocation_url": "https://www.frinf.org/oauth/revoke"
+  }
+}
