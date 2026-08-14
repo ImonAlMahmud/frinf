@@ -1,16 +1,17 @@
 {
   "resource": "https://www.frinf.org",
   "authorization_servers": [
-    "https://www.frinf.org"
+    "https://www.frinf.org",
+    "https://frinf.org"
   ],
   "scopes_supported": [
+    "openid",
+    "profile",
+    "email",
     "agent:read",
     "agent:write",
     "research:access",
-    "grant:apply",
-    "openid",
-    "profile",
-    "email"
+    "grant:apply"
   ],
   "bearer_methods_supported": [
     "header"
