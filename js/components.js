@@ -10,8 +10,10 @@
     const headerPlaceholder = document.getElementById('header-placeholder') || document.getElementById('siteHeader');
     if (!headerPlaceholder) return;
 
-    let rawPath = window.location.pathname.split('/').pop().toLowerCase();
-    if (!rawPath || rawPath === '') rawPath = 'index.html';
+    let currentClean = window.location.pathname.split('/').pop().toLowerCase().replace('.html', '');
+    if (!currentClean || currentClean === '' || currentClean === 'index') {
+      currentClean = 'index';
+    }
 
     const navItems = [
       { name: 'Home', link: 'index.html', icon: 'fa-house' },
@@ -23,8 +25,8 @@
     ];
 
     const navLinksHTML = navItems.map(item => {
-      const itemLink = item.link.toLowerCase();
-      const isActive = (itemLink === rawPath) || (rawPath === 'index.html' && itemLink === 'index.html');
+      const itemClean = item.link.toLowerCase().replace('.html', '');
+      const isActive = (itemClean === currentClean);
       return `<a href="${item.link}" class="${isActive ? 'active' : ''}"><i class="fa-solid ${item.icon} nav-icon"></i><span>${item.name}</span></a>`;
     }).join('');
 

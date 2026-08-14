@@ -446,8 +446,9 @@ header.scrolled .brand-text b {
   bottom: 0;
   left: 0;
   width: 0;
-  height: 1.5px;
-  background: var(--gold-500);
+  height: 2.5px;
+  background: var(--gold-600);
+  border-radius: 2px;
   transition: width .35s var(--ease);
 }
 
@@ -458,6 +459,7 @@ header.scrolled .brand-text b {
 
 .nav-links a.active {
   color: var(--gold-600);
+  font-weight: 700;
 }
 
 .nav-cta {
@@ -524,11 +526,21 @@ header.scrolled .brand-text b {
     right: 0;
   }
   .nav-links a {
-    color: var(--gold-100);
-    font-size: 16.5px;
+    color: rgba(255,255,255,0.85);
+    font-size: 16px;
+    padding: 8px 14px;
+    border-radius: 8px;
+    width: 100%;
+    transition: all .25s var(--ease);
+  }
+  .nav-links a.active {
+    color: var(--gold-400) !important;
+    background: rgba(198, 163, 86, 0.15);
+    font-weight: 700;
+    border-left: 3px solid var(--gold-500);
   }
   .nav-links a::after {
-    background: var(--gold-500);
+    display: none;
   }
   .menu-toggle {
     display: block;
