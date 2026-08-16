@@ -48,6 +48,7 @@
       </div>
 
       <div class="nav-cta">
+        <div class="lang-selector-wrap" id="google_translate_element"></div>
         <a href="donate.html" class="btn btn-gold desktop-donate-btn"><i class="fa-solid fa-heart"></i> Donate</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
@@ -210,10 +211,34 @@
     }
   }
 
+  // 4. Initialize Google Translate
+  function initGoogleTranslate() {
+    if (!document.getElementById('google-translate-script')) {
+      window.googleTranslateElementInit = function () {
+        if (window.google && window.google.translate) {
+          new window.google.translate.TranslateElement({
+            pageLanguage: 'en',
+            includedLanguages: 'bn,en,ar,es,fr,de,hi,zh-CN,ja,ru,pt,it,tr',
+            layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
+            autoDisplay: false
+          }, 'google_translate_element');
+        }
+      };
+
+      const script = document.createElement('script');
+      script.id = 'google-translate-script';
+      script.type = 'text/javascript';
+      script.src = 'https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit';
+      script.async = true;
+      document.head.appendChild(script);
+    }
+  }
+
   // Auto initialize on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
+    initGoogleTranslate();
 
     if (!document.querySelector('script[src*="webmcp.js"]')) {
       const s = document.createElement('script');
