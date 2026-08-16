@@ -2154,7 +2154,7 @@ img, canvas, svg, video {
 }
 
 /* ==========================================================================
-   Google Translate Custom Styling & Header Pill Integration
+   Google Translate Custom Styling — Sleek Icon-Only Button
    ========================================================================== */
 .goog-te-banner-frame.skiptranslate,
 .goog-te-banner-frame,
@@ -2175,72 +2175,68 @@ body {
 .lang-selector-wrap {
   display: inline-flex;
   align-items: center;
-  margin-right: 6px;
+  margin-right: 8px;
 }
 
 .goog-te-gadget-simple {
+  width: 38px !important;
+  height: 38px !important;
+  min-width: 38px !important;
+  min-height: 38px !important;
+  border-radius: 50% !important;
+  padding: 0 !important;
+  margin: 0 !important;
   background: rgba(16, 27, 51, 0.05) !important;
   border: 1px solid var(--line) !important;
-  padding: 6px 12px !important;
-  border-radius: 50px !important;
-  font-family: 'Manrope', sans-serif !important;
-  font-size: 13px !important;
-  color: var(--navy-900) !important;
   display: inline-flex !important;
   align-items: center !important;
-  gap: 4px !important;
+  justify-content: center !important;
   cursor: pointer !important;
   transition: all 0.3s var(--ease) !important;
   box-shadow: 0 2px 8px rgba(16, 27, 51, 0.04) !important;
+  overflow: hidden !important;
 }
 
 .goog-te-gadget-simple:hover {
   background: var(--white) !important;
   border-color: var(--gold-500) !important;
-  box-shadow: 0 4px 14px rgba(198, 163, 86, 0.25) !important;
+  box-shadow: 0 4px 14px rgba(198, 163, 86, 0.3) !important;
   transform: translateY(-1px);
 }
 
 .goog-te-menu-value {
-  display: inline-flex !important;
+  display: flex !important;
   align-items: center !important;
-  gap: 4px !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 100% !important;
   margin: 0 !important;
-  font-weight: 600 !important;
-  color: var(--navy-900) !important;
+  padding: 0 !important;
 }
 
-.goog-te-menu-value span {
-  color: var(--navy-900) !important;
-  font-weight: 600 !important;
-  border: none !important;
-}
-
-.goog-te-menu-value span:nth-child(3),
-.goog-te-menu-value span:nth-child(5) {
-  display: none !important;
-}
-
+/* Hide all text, lines, and images inside Google translate value element */
+.goog-te-menu-value span,
 .goog-te-menu-value img {
   display: none !important;
 }
 
+/* Centered Font Awesome Globe Icon */
 .goog-te-menu-value::before {
   content: '\f0ac';
   font-family: 'Font Awesome 6 Free';
   font-weight: 900;
-  font-size: 12px;
+  font-size: 15px;
+  color: var(--navy-900);
+  transition: color 0.3s var(--ease);
+}
+
+.goog-te-gadget-simple:hover .goog-te-menu-value::before {
   color: var(--gold-600);
-  margin-right: 4px;
 }
 
 .goog-te-gadget {
   font-size: 0px !important;
   color: transparent !important;
-}
-
-.goog-te-gadget span {
-  font-size: 13px !important;
 }
 
 .goog-te-gadget > span > a {
@@ -2252,8 +2248,14 @@ body {
     margin-right: 4px;
   }
   .goog-te-gadget-simple {
-    padding: 5px 10px !important;
-    font-size: 12px !important;
+    width: 34px !important;
+    height: 34px !important;
+    min-width: 34px !important;
+    min-height: 34px !important;
+  }
+  .goog-te-menu-value::before {
+    font-size: 13px;
   }
 }
+
 
