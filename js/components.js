@@ -239,11 +239,41 @@
     }
   }
 
+  // Continuously remove top banner iframe and prevent body top shift
+  function hideGoogleTranslateBanner() {
+    const cleanStyles = () => {
+      document.body.style.top = '0px';
+      document.body.style.position = 'static';
+      document.body.style.marginTop = '0px';
+      document.documentElement.style.top = '0px';
+      document.documentElement.style.position = 'static';
+      document.documentElement.style.marginTop = '0px';
+
+      const banners = document.querySelectorAll('.goog-te-banner-frame, iframe.goog-te-banner-frame, iframe[id*=":1.container"], iframe[id*=":2.container"], iframe[class*="VIpgm"]');
+      banners.forEach(b => {
+        b.style.display = 'none';
+        b.style.visibility = 'hidden';
+        b.style.opacity = '0';
+        b.style.height = '0';
+      });
+    };
+
+    cleanStyles();
+    setInterval(cleanStyles, 300);
+
+    if (window.MutationObserver) {
+      const observer = new MutationObserver(cleanStyles);
+      observer.observe(document.body, { attributes: true, attributeFilter: ['style', 'class'] });
+      observer.observe(document.documentElement, { attributes: true, attributeFilter: ['style', 'class'] });
+    }
+  }
+
   // Auto initialize on DOM ready
   document.addEventListener('DOMContentLoaded', () => {
     renderHeader();
     renderFooter();
     initGoogleTranslate();
+    hideGoogleTranslateBanner();
 
     if (!document.querySelector('script[src*="webmcp.js"]')) {
       const s = document.createElement('script');
