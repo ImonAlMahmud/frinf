@@ -223,7 +223,6 @@
         if (window.google && window.google.translate) {
           new window.google.translate.TranslateElement({
             pageLanguage: 'en',
-            includedLanguages: 'bn,en,ar,es,fr,de,hi,zh-CN,ja,ru,pt,it,tr',
             layout: google.translate.TranslateElement.InlineLayout.SIMPLE,
             autoDisplay: false
           }, 'google_translate_element');
