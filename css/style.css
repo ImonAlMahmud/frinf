@@ -2154,7 +2154,7 @@ img, canvas, svg, video {
 }
 
 /* ==========================================================================
-   Google Translate Custom Styling — Sleek Icon-Only Button
+   Google Translate Custom Styling — Crisp Globe Icon Button
    ========================================================================== */
 .goog-te-banner-frame.skiptranslate,
 .goog-te-banner-frame,
@@ -2172,66 +2172,64 @@ body {
   display: none !important;
 }
 
-.lang-selector-wrap {
+.lang-btn-wrap {
+  position: relative;
   display: inline-flex;
   align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
   margin-right: 8px;
+  flex-shrink: 0;
 }
 
-.goog-te-gadget-simple {
-  width: 38px !important;
-  height: 38px !important;
-  min-width: 38px !important;
-  min-height: 38px !important;
-  border-radius: 50% !important;
-  padding: 0 !important;
-  margin: 0 !important;
-  background: rgba(16, 27, 51, 0.05) !important;
-  border: 1px solid var(--line) !important;
-  display: inline-flex !important;
-  align-items: center !important;
-  justify-content: center !important;
-  cursor: pointer !important;
-  transition: all 0.3s var(--ease) !important;
-  box-shadow: 0 2px 8px rgba(16, 27, 51, 0.04) !important;
-  overflow: hidden !important;
+.lang-icon-btn {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  background: rgba(16, 27, 51, 0.05);
+  border: 1px solid var(--line);
+  color: var(--navy-900);
+  font-size: 15px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s var(--ease);
+  box-shadow: 0 2px 8px rgba(16, 27, 51, 0.04);
 }
 
-.goog-te-gadget-simple:hover {
-  background: var(--white) !important;
-  border-color: var(--gold-500) !important;
-  box-shadow: 0 4px 14px rgba(198, 163, 86, 0.3) !important;
+.lang-btn-wrap:hover .lang-icon-btn {
+  background: var(--white);
+  border-color: var(--gold-500);
+  color: var(--gold-600);
+  box-shadow: 0 4px 14px rgba(198, 163, 86, 0.3);
   transform: translateY(-1px);
 }
 
-.goog-te-menu-value {
-  display: flex !important;
-  align-items: center !important;
-  justify-content: center !important;
+/* Transparent Google Translate overlay over the Globe button */
+.google-translate-hidden {
+  position: absolute;
+  inset: 0;
+  opacity: 0.001;
+  overflow: hidden;
+  cursor: pointer;
+  z-index: 5;
+}
+
+.google-translate-hidden .goog-te-gadget-simple {
   width: 100% !important;
   height: 100% !important;
-  margin: 0 !important;
   padding: 0 !important;
+  margin: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  cursor: pointer !important;
+  display: block !important;
 }
 
-/* Hide all text, lines, and images inside Google translate value element */
-.goog-te-menu-value span,
-.goog-te-menu-value img {
-  display: none !important;
-}
-
-/* Centered Font Awesome Globe Icon */
-.goog-te-menu-value::before {
-  content: '\f0ac';
-  font-family: 'Font Awesome 6 Free';
-  font-weight: 900;
-  font-size: 15px;
-  color: var(--navy-900);
-  transition: color 0.3s var(--ease);
-}
-
-.goog-te-gadget-simple:hover .goog-te-menu-value::before {
-  color: var(--gold-600);
+.google-translate-hidden * {
+  cursor: pointer !important;
 }
 
 .goog-te-gadget {
@@ -2244,18 +2242,18 @@ body {
 }
 
 @media (max-width: 768px) {
-  .lang-selector-wrap {
-    margin-right: 4px;
+  .lang-btn-wrap,
+  .lang-icon-btn {
+    width: 34px;
+    height: 34px;
   }
-  .goog-te-gadget-simple {
-    width: 34px !important;
-    height: 34px !important;
-    min-width: 34px !important;
-    min-height: 34px !important;
-  }
-  .goog-te-menu-value::before {
+  .lang-icon-btn {
     font-size: 13px;
   }
+  .lang-btn-wrap {
+    margin-right: 4px;
+  }
 }
+
 
 

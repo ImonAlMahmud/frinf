@@ -48,7 +48,12 @@
       </div>
 
       <div class="nav-cta">
-        <div class="lang-selector-wrap" id="google_translate_element"></div>
+        <div class="lang-btn-wrap" title="Select Language / ভাষা নির্বাচন করুন">
+          <button type="button" class="lang-icon-btn" aria-label="Change Language">
+            <i class="fa-solid fa-globe"></i>
+          </button>
+          <div id="google_translate_element" class="google-translate-hidden"></div>
+        </div>
         <a href="donate.html" class="btn btn-gold desktop-donate-btn"><i class="fa-solid fa-heart"></i> Donate</a>
         <button class="menu-toggle" id="menuToggle" aria-label="Toggle navigation menu">
           <i class="fa-solid fa-bars"></i>
