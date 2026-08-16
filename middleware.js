@@ -21,7 +21,7 @@ export default async function middleware(request) {
         "research:access",
         "grant:apply"
       ],
-      bearer_methods_supported": [
+      bearer_methods_supported: [
         "header"
       ],
       resource_documentation: `${origin}/auth.md`
