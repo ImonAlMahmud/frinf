@@ -2,34 +2,43 @@
    Frontier Research and Innovation Foundation — Main JS Logic
    ========================================================================== */
 
-document.addEventListener('DOMContentLoaded', () => {
+function initMain() {
   // 0. Preloader Screen Animation (Guaranteed Minimum 1.5 Seconds Display)
   const preloader = document.getElementById('preloader');
   const preloaderBar = document.getElementById('preloaderBar');
   const preloaderPercent = document.getElementById('preloaderPercent');
 
-  if (preloader && preloaderBar && preloaderPercent) {
-    let progress = 0;
-    const minDuration = 1500; // 1.5 seconds minimum
-    const startTime = Date.now();
-
-    const interval = setInterval(() => {
-      const elapsedTime = Date.now() - startTime;
-      let targetProgress = Math.min(100, Math.floor((elapsedTime / minDuration) * 100));
-
-      progress = targetProgress;
-      preloaderBar.style.width = progress + '%';
-      preloaderPercent.innerText = progress + '%';
-
-      if (elapsedTime >= minDuration && progress >= 100) {
-        clearInterval(interval);
-        preloaderBar.style.width = '100%';
-        preloaderPercent.innerText = '100%';
-        setTimeout(() => {
-          preloader.classList.add('fade-out');
-        }, 250);
+  if (preloader) {
+    // Fail-safe auto hide after 2.5 seconds max
+    setTimeout(() => {
+      if (!preloader.classList.contains('fade-out')) {
+        preloader.classList.add('fade-out');
       }
-    }, 20);
+    }, 2500);
+
+    if (preloaderBar && preloaderPercent) {
+      let progress = 0;
+      const minDuration = 1500; // 1.5 seconds minimum
+      const startTime = Date.now();
+
+      const interval = setInterval(() => {
+        const elapsedTime = Date.now() - startTime;
+        let targetProgress = Math.min(100, Math.floor((elapsedTime / minDuration) * 100));
+
+        progress = targetProgress;
+        preloaderBar.style.width = progress + '%';
+        preloaderPercent.innerText = progress + '%';
+
+        if (elapsedTime >= minDuration && progress >= 100) {
+          clearInterval(interval);
+          preloaderBar.style.width = '100%';
+          preloaderPercent.innerText = '100%';
+          setTimeout(() => {
+            preloader.classList.add('fade-out');
+          }, 250);
+        }
+      }, 20);
+    }
   }
 
   // 1. Genuine 3D Animated DNA Double Helix Engine
@@ -271,4 +280,10 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initMain);
+} else {
+  initMain();
+}
