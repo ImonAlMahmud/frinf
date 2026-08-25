@@ -2500,5 +2500,43 @@ body.translated-rtl {
   }
 }
 
+/* ==========================================================================
+   Google Translate Language Popup Menu — Responsive Mobile Panel
+   ========================================================================== */
+iframe.goog-te-menu-frame,
+iframe[class*="goog-te-menu-frame"],
+.goog-te-menu-frame {
+  position: fixed !important;
+  top: 75px !important;
+  left: 50% !important;
+  transform: translateX(-50%) !important;
+  width: 92vw !important;
+  max-width: 420px !important;
+  height: 72vh !important;
+  max-height: 480px !important;
+  border-radius: 16px !important;
+  border: 1.5px solid var(--gold-500) !important;
+  box-shadow: 0 20px 60px rgba(11, 25, 44, 0.4), 0 0 30px rgba(198, 163, 86, 0.15) !important;
+  z-index: 999999 !important;
+  background: #ffffff !important;
+  overflow-y: auto !important;
+  -webkit-overflow-scrolling: touch !important;
+}
+
+@media (max-width: 600px) {
+  iframe.goog-te-menu-frame,
+  iframe[class*="goog-te-menu-frame"],
+  .goog-te-menu-frame {
+    top: 65px !important;
+    left: 4vw !important;
+    transform: none !important;
+    width: 92vw !important;
+    height: 70vh !important;
+    max-height: 460px !important;
+    border-radius: 14px !important;
+  }
+}
+
+
 
 

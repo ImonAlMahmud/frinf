@@ -238,7 +238,7 @@
     }
   }
 
-  // Continuously remove top banner iframe and prevent body top shift
+  // Continuously remove top banner iframe, prevent body top shift & style language menu popup
   function hideGoogleTranslateBanner() {
     const cleanStyles = () => {
       document.body.style.top = '0px';
@@ -254,6 +254,25 @@
         b.style.visibility = 'hidden';
         b.style.opacity = '0';
         b.style.height = '0';
+      });
+
+      const menuFrames = document.querySelectorAll('iframe.goog-te-menu-frame, iframe[class*="goog-te-menu-frame"]');
+      menuFrames.forEach(m => {
+        m.style.setProperty('position', 'fixed', 'important');
+        m.style.setProperty('top', window.innerWidth <= 600 ? '65px' : '75px', 'important');
+        m.style.setProperty('left', window.innerWidth <= 600 ? '4vw' : '50%', 'important');
+        if (window.innerWidth > 600) {
+          m.style.setProperty('transform', 'translateX(-50%)', 'important');
+        } else {
+          m.style.setProperty('transform', 'none', 'important');
+        }
+        m.style.setProperty('width', '92vw', 'important');
+        m.style.setProperty('max-width', '420px', 'important');
+        m.style.setProperty('height', '72vh', 'important');
+        m.style.setProperty('max-height', '480px', 'important');
+        m.style.setProperty('border-radius', '16px', 'important');
+        m.style.setProperty('box-shadow', '0 20px 60px rgba(11,25,44,0.35)', 'important');
+        m.style.setProperty('z-index', '999999', 'important');
       });
     };
 
